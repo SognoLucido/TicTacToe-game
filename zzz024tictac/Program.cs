@@ -8,9 +8,9 @@ class Program
     
     static void Main()
     {
-        bool check = true;
+        bool check = true, check1 = true;
         string name1 = string.Empty;
-        string name2;
+        string name2 = string.Empty;
         int rinput;
         while (true)
         {
@@ -25,15 +25,17 @@ class Program
                  }
                  check = false;
             }
-
-            Console.Write("insert Player2 name : ");
-             name2 = Console.ReadLine();
-            if (String.IsNullOrEmpty(name2))
+            if (check1)
             {
-                Console.WriteLine("Invalid name");
-                continue;
+                Console.Write("insert Player2 name : ");
+                name2 = Console.ReadLine();
+                if (String.IsNullOrEmpty(name2))
+                {
+                    Console.WriteLine("Invalid name");
+                    continue;
+                }
+                check1 = false;
             }
-
             Console.Write("best of ? : ");
             string input = Console.ReadLine();
             if (!int.TryParse(input, out rinput))
