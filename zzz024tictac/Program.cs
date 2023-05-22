@@ -40,12 +40,13 @@ class Program
             string input = Console.ReadLine();
             if (!int.TryParse(input, out rinput))
             {
-                Console.WriteLine("number");
+                Console.WriteLine("invalid number");
                 continue;
             }
                 
 
             Game game = new Game(name1, name2,rinput);
+            Console.Clear();
             while (true)
             {
                 game.CleanBoard(0);
