@@ -195,16 +195,16 @@ class Game
         {
 
             if (Sign[4 - i] == "O" && Sign[4] == "O" && Sign[4 + i] == "O") Afterm(false);
-            else if (Sign[0] == "O" && Sign[1] == "O" && Sign[2] == "O") Afterm(false);
-            else if (Sign[0] == "O" && Sign[3] == "O" && Sign[6] == "O") Afterm(false);
-            else if (Sign[2] == "O" && Sign[5] == "O" && Sign[8] == "O") Afterm(false);
-            else if (Sign[6] == "O" && Sign[7] == "O" && Sign[8] == "O") Afterm(false);
+            if (Sign[0] == "O" && Sign[1] == "O" && Sign[2] == "O") Afterm(false);
+            if (Sign[0] == "O" && Sign[3] == "O" && Sign[6] == "O") Afterm(false);
+            if (Sign[2] == "O" && Sign[5] == "O" && Sign[8] == "O") Afterm(false);
+            if (Sign[6] == "O" && Sign[7] == "O" && Sign[8] == "O") Afterm(false);
 
-            else if (Sign[4 - i] == "X" && Sign[4] == "X" && Sign[4 + i] == "X") Afterm(true);
-            else if (Sign[0] == "X" && Sign[1] == "X" && Sign[2] == "X") Afterm(true);
-            else if (Sign[0] == "X" && Sign[3] == "X" && Sign[6] == "X") Afterm(true);
-            else if (Sign[2] == "X" && Sign[5] == "X" && Sign[8] == "X") Afterm(true);
-            else if (Sign[6] == "X" && Sign[7] == "X" && Sign[8] == "X") Afterm(true);
+            if (Sign[4 - i] == "X" && Sign[4] == "X" && Sign[4 + i] == "X") Afterm(true);
+            if (Sign[0] == "X" && Sign[1] == "X" && Sign[2] == "X") Afterm(true);
+            if (Sign[0] == "X" && Sign[3] == "X" && Sign[6] == "X") Afterm(true);
+            if (Sign[2] == "X" && Sign[5] == "X" && Sign[8] == "X") Afterm(true);
+            if (Sign[6] == "X" && Sign[7] == "X" && Sign[8] == "X") Afterm(true);
 
 
 
@@ -228,15 +228,20 @@ class Game
 
     private bool Win()
     {
-        if(Playerstats[1].Item3 == Bestof ) return true;
-        if (Playerstats[0].Item3 == Bestof) return true;
+        if(Playerstats[1].Item3 + Playerstats[0].Item3 == Bestof ) return true;
         return false;
     }
 
     public string Winprint()
     {
-        if (Playerstats[1].Item3 == Bestof) return  Playerstats[1].Item1 + "  WON ";
-        else if (Playerstats[0].Item3 == Bestof) return  Playerstats[0].Item1 + "  WON  ";
+        if ((Playerstats[1].Item3 + Playerstats[0].Item3) == Bestof)
+        {
+            if (Playerstats[0].Item3 < Playerstats[1].Item3)
+                return Playerstats[1].Item1 + "  WON ";
+
+            else return Playerstats[0].Item1 + "  WON ";
+        }
+        
         else return "";
     }
 
